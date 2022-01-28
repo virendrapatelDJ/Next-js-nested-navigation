@@ -3,12 +3,22 @@ import React from 'react';
 
 export default function Sidebar() {
   return (
-    <div className="sidebar">
-      <Link href="/dashboard/charts">Charts</Link>
-      <Link href="/dashboard/accounts">Accounts</Link>
-      <Link href="/dashboard/summary">Summry</Link>
-      <Link href="/dashboard/history">History</Link>
-      <Link href="/dashboard/users">User</Link>
-    </div>
+    <ul className="list-group">
+      <li className="list-group-item">
+        <Link href="/dashboard/charts">Charts</Link>
+      </li>
+      <li className="list-group-item">
+        <Link href="/dashboard/accounts">Accounts</Link>
+      </li>
+      <li className="list-group-item">
+        <Link href="/dashboard/summary">Summry</Link>
+      </li>
+      <li className="list-group-item">
+        <Link href="/dashboard/history">History</Link>
+      </li>
+      <li className="list-group-item">
+        <Link href="/dashboard/users">User</Link>
+      </li>
+    </ul>
   );
 }
