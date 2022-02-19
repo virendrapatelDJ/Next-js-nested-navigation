@@ -1,38 +1,64 @@
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import DashBoard from "..";
-import { Loader } from "../../../components/common/Loader";
-import Layout from "../../../components/Layout";
-import Articles from "../articles";
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import DashBoard from '..';
+import { Loader } from '../../../components/common/Loader';
+import { DataContainer } from '../../../components/containers/DataContainer';
+import Layout from '../../../components/Layout';
+import Articles from '../articles';
+
+function ArticleRendered({ data: headline }) {
+  return (
+    <div>
+      <p className="display-4">{headline?.title}</p>
+      <p>{headline?.body}</p>
+      <p>{headline?.body}</p>
+      <p>{headline?.body}</p>
+      <p>{headline?.body}</p>
+    </div>
+  );
+}
 
 export default function Article() {
   const router = useRouter();
-  const query = router.query;
+  const { id } = router.query;
   const [headline, setHeadline] = useState(null);
-  console.log(router.query.id);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const resetState = () => {
+    setHeadline(null);
+    setLoading(true);
+    setError(null);
+  };
 
   useEffect(() => {
-    const { id } = query;
-    setHeadline(null);
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then((response) => response.json())
-      .then((headline) => setHeadline(headline));
-  }, [query]);
+    if (id) {
+      resetState();
+      fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        .then((response) => {
+          if (response.ok) return response.json();
+          throw new Error('Internal Server Error 500');
+        })
+        .then((headline) => {
+          setHeadline(headline);
+          setLoading(false);
+        })
+        .catch((error) => {
+          setLoading(false);
+          setError(error);
+        });
+    }
+  }, [id]);
   return (
     <div>
       <hr />
-
-      {headline ? (
-        <div>
-          <p className="display-4">{headline.title}</p>
-          <p>{headline.body}</p>
-          <p>{headline.body}</p>
-          <p>{headline.body}</p>
-          <p>{headline.body}</p>
-        </div>
-      ) : (
-        <Loader />
-      )}
+      <DataContainer
+        dataRenderer={{
+          isComponent: true,
+          Renderer: ArticleRendered,
+        }}
+        dataSource={{ loading, error, data: headline }}
+      />
     </div>
   );
 }
