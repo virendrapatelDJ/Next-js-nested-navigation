@@ -2,7 +2,7 @@ import React from "react";
 import DashBoard from ".";
 import Layout from "../../components/Layout";
 
-export default function Charts() {
+export default function Summary() {
   return (
     <div>
       <h1>Summary Page</h1>
@@ -10,7 +10,7 @@ export default function Charts() {
   );
 }
 
-Charts.getLayout = (page) => {
+Summary.getLayout = (page) => {
   return (
     <Layout>
       <DashBoard>{page}</DashBoard>

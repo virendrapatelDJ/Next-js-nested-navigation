@@ -8,6 +8,9 @@ export default function Sidebar() {
         <Link href="/dashboard/charts">Charts</Link>
       </li>
       <li className="list-group-item">
+        <Link href="/dashboard/articles">Articles</Link>
+      </li>
+      <li className="list-group-item">
         <Link href="/dashboard/accounts">Accounts</Link>
       </li>
       <li className="list-group-item">

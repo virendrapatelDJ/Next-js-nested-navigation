@@ -2,7 +2,7 @@ import React from "react";
 import DashBoard from ".";
 import Layout from "../../components/Layout";
 
-export default function Charts() {
+export default function History() {
   return (
     <div>
       <h1>HIstory Page</h1>
@@ -10,7 +10,7 @@ export default function Charts() {
   );
 }
 
-Charts.getLayout = (page) => {
+History.getLayout = (page) => {
   return (
     <Layout>
       <DashBoard>{page}</DashBoard>
