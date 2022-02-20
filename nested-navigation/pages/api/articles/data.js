@@ -7,7 +7,9 @@ const articles = new Array(100).fill().map((article) => ({
   headline: lorem.words(6),
   id: datatype.uuid(),
   summary: lorem.paragraphs(1),
-  content: new Array(datatype.number({min : 6 , max : 20})).fill().map(i=>lorem.paragraphs(2)),
+  content: new Array(datatype.number({ min: 6, max: 20 }))
+    .fill()
+    .map((i) => lorem.paragraphs(2)),
 }));
 
 const getArticles = () => {

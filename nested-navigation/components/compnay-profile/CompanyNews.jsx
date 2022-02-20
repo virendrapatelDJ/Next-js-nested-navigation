@@ -1,7 +1,7 @@
-import React from 'react';
-import { useArticles } from '../../hooks/useArticles';
-import { Loader } from '../../components/common/Loader';
-import Headlines from '../Headlines/Headlines';
+import React from "react";
+import { useArticles } from "../../hooks/useArticles";
+import { Loader } from "../../components/common/Loader";
+import Headlines from "../Headlines/Headlines";
 
 function CompanyNews() {
   const { articles = [], error, loading } = useArticles();

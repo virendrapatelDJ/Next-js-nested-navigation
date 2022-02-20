@@ -1,19 +1,19 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import {
   activeTabColor,
   blueColor,
   darkHeaderColor,
   tabColor,
-} from '../../colors';
-import { subTabs } from '../../config/constants';
+} from "../../colors";
+import { subTabs } from "../../config/constants";
 
 function NavTabs() {
   const [tabs, setTabs] = useState([]);
   const router = useRouter();
   const { activeTab = subTabs.COMPANY_NEWS, code } = router.query;
   useEffect(() => {
-    fetch('/api/tabs')
+    fetch("/api/tabs")
       .then((response) => response.json())
       .then(({ tabs }) => {
         setTabs(tabs);
@@ -41,7 +41,7 @@ function NavTabs() {
       <ul
         class="nav nav-tabs container"
         style={{
-          backgroundColor: '#2f3331',
+          backgroundColor: "#2f3331",
         }}
       >
         {tabs.map((tab, index) => (
@@ -49,17 +49,17 @@ function NavTabs() {
             class="nav-item"
             onClick={handleTabChange(tab)}
             style={{
-              borderColor: 'transparent',
+              borderColor: "transparent",
             }}
           >
             <a
-              class={'nav-link'}
+              class={"nav-link"}
               aria-current="page"
               href="#"
               style={{
-                color: 'white',
+                color: "white",
                 backgroundColor: isActive(tab) ? blueColor : tabColor,
-                textDecoration: 'none',
+                textDecoration: "none",
               }}
             >
               <span>{tab.title}</span>

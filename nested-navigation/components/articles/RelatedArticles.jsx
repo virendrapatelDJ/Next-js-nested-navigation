@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { Fragment, useEffect, useState } from 'react';
-import { Loader } from '../common/Loader';
-import { shuffle } from 'lodash';
-import Headlines from '../Headlines/Headlines';
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { Fragment, useEffect, useState } from "react";
+import { Loader } from "../common/Loader";
+import { shuffle } from "lodash";
+import Headlines from "../Headlines/Headlines";
 
 function RelatedArticles({ children }) {
   const [articles, setArticles] = useState([]);

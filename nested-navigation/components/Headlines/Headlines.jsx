@@ -1,5 +1,5 @@
-import React from 'react';
-import Headline from './Headline';
+import React from "react";
+import Headline from "./Headline";
 
 export default function Headlines({ articles = [] }) {
   return (

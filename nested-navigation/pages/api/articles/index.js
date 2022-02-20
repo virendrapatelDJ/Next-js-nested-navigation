@@ -2,9 +2,9 @@ import faker from "@faker-js/faker";
 import { getArticles } from "./data";
 
 const handler = (request, response) => {
-  setTimeout(()=>{
+  setTimeout(() => {
     return response.json({ articles: getArticles() });
-  } , 500)
+  }, 500);
 };
 
 export default handler;

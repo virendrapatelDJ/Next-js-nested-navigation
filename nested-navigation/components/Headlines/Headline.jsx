@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React from 'react';
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
 export default function Headline({ article }) {
   const router = useRouter();
   const { activeTab, articleId, ...query } = router.query;
