@@ -1,40 +1,36 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { Fragment, useEffect, useState } from "react";
-import { Loader } from "../common/Loader";
-import { shuffle } from "lodash";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Loader } from '../common/Loader';
+import { shuffle } from 'lodash';
+import Headlines from '../Headlines/Headlines';
 
 function RelatedArticles({ children }) {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const { articleId } = router.query;
+  console.log({ articleId });
 
   useEffect(() => {
     setArticles([]);
     setLoading(true);
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch(`/api/articles/related/${articleId}`)
       .then((response) => response.json())
-      .then((data) => shuffle(data))
-      .then((data) => data.slice(0, 10))
-      .then((data) => {
-        setArticles(data || []);
+      .then(({ relatedArticles }) => {
+        setArticles(
+          relatedArticles.map((article) => ({
+            headline: article.headline,
+            id: article.id,
+          }))
+        );
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [router.query.id]);
+  }, [articleId]);
 
   const renderArticlesList = () => {
-    return (
-      <ul className="list-group">
-        {articles.map((article, index) => (
-          <li className="list-group-item">
-            <Link href={`/dashboard/article/${article.id}`}>
-              {`${index + 1} : ${article.title}`}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    );
+    return <Headlines articles={articles} />;
   };
   return (
     <div>

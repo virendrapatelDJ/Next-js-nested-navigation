@@ -1,5 +1,5 @@
-import React from 'react';
-import { Loader } from '../common/Loader';
+import React from "react";
+import { Loader } from "../common/Loader";
 
 function DataContainer({ dataSource, dataRenderer }) {
   const { loading, error, data } = dataSource;

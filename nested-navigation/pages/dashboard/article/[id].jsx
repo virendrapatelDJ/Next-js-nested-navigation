@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import DashBoard from '..';
-import { Loader } from '../../../components/common/Loader';
-import { DataContainer } from '../../../components/containers/DataContainer';
-import Layout from '../../../components/Layout';
-import Articles from '../articles';
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import DashBoard from "..";
+import { Loader } from "../../../components/common/Loader";
+import { DataContainer } from "../../../components/containers/DataContainer";
+import Layout from "../../../components/Layout";
+import Articles from "../articles";
 
 function ArticleRendered({ data: headline }) {
   return (
@@ -37,7 +37,7 @@ export default function Article() {
       fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
         .then((response) => {
           if (response.ok) return response.json();
-          throw new Error('Internal Server Error 500');
+          throw new Error("Internal Server Error 500");
         })
         .then((headline) => {
           setHeadline(headline);

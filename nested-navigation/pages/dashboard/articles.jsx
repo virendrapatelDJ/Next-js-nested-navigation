@@ -1,10 +1,10 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { Fragment, useEffect, useState } from 'react';
-import DashBoard from '.';
-import { RelatedArticles } from '../../components/articles/RelatedArticles';
-import { Loader } from '../../components/common/Loader';
-import Layout from '../../components/Layout';
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { Fragment, useEffect, useState } from "react";
+import DashBoard from ".";
+import { RelatedArticles } from "../../components/articles/RelatedArticles";
+import { Loader } from "../../components/common/Loader";
+import Layout from "../../components/Layout";
 
 export default function Articles({ children }) {
   const [articles, setArticles] = useState([]);
@@ -13,7 +13,7 @@ export default function Articles({ children }) {
   useEffect(() => {
     setLoading(true);
     setArticles([]);
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
 
       .then((data) => {
@@ -24,7 +24,7 @@ export default function Articles({ children }) {
   }, []);
 
   const showHeadline = (article, index) => {
-    console.log('Changing page..');
+    console.log("Changing page..");
     console.log({ article, index });
   };
 
