@@ -1,10 +1,10 @@
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { blueColor, whiteTextColor } from "../../../../colors";
-import { ArticleViewer } from "../../../../components/articles/ArticleViewer";
-import { RelatedArticles } from "../../../../components/articles/RelatedArticles";
-import { Loader } from "../../../../components/common/Loader";
-import Layout from "../../../../components/Layout";
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { blueColor, whiteTextColor } from '../../../../colors';
+import { ArticleViewer } from '../../../../components/articles/ArticleViewer';
+import { RelatedArticles } from '../../../../components/articles/RelatedArticles';
+import { Loader } from '../../../../components/common/Loader';
+import Layout from '../../../../components/Layout';
 
 export default function ArticleContainer() {
   const router = useRouter();
